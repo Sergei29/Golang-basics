@@ -25,3 +25,11 @@ func newDeck() Deck {
 
 	return deck
 }
+
+func (d Deck) deal(numberOfCards int) (Deck, Deck) {
+
+	hand := d[:numberOfCards]
+	newDeck := d[numberOfCards:]
+
+	return hand, newDeck
+}
