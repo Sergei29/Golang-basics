@@ -10,7 +10,7 @@ var cardSuits [4]string = [4]string{"Hearts", "Diamonds", "Spades", "Clubs"}
 
 func (d Deck) print() {
 	for index, card := range d {
-		fmt.Println(index+1, card)
+		fmt.Println(index, card)
 	}
 }
 
@@ -26,10 +26,6 @@ func newDeck() Deck {
 	return deck
 }
 
-func (d Deck) deal(numberOfCards int) (Deck, Deck) {
-
-	hand := d[:numberOfCards]
-	newDeck := d[numberOfCards:]
-
-	return hand, newDeck
+func deal(d Deck, handSize int) (Deck, Deck) {
+	return d[:handSize], d[handSize:]
 }
