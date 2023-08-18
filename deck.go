@@ -2,8 +2,10 @@ package main
 
 import (
 	"fmt"
+	rand "math/rand"
 	"os"
 	"strings"
+	"time"
 )
 
 type Deck []string
@@ -66,4 +68,24 @@ func newDeckFromFile(fileName string) Deck {
 	}
 
 	return byteSliceToDeck(data)
+}
+
+/*
+* a util to create a new `Rand`
+* in order to have a new random pattern at each shuffle() call
+* because without it, just using `rand.Intn(n)`, it will shuffle the
+* slice, but each time in the same order
+ */
+func getNewRandom() *rand.Rand {
+	source := rand.NewSource(time.Now().UnixNano())
+	return rand.New(source)
+}
+
+func (d Deck) shuffle() {
+	newRand := getNewRandom()
+
+	for index := range d {
+		randomIndex := newRand.Intn(len(d) - 1)
+		d[index], d[randomIndex] = d[randomIndex], d[index]
+	}
 }
