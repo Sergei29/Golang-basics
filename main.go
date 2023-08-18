@@ -1,9 +1,9 @@
 package main
 
+var filename string = "assets/my_cards"
+
 func main() {
-	cards := newDeck()
-	hand, remainingCards := deal(cards, 5)
-	hand.print()
-	cards = remainingCards
-	cards.print()
+	retrievedDeck := newDeckFromFile(filename)
+
+	retrievedDeck.print()
 }
