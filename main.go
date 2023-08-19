@@ -1,10 +1,7 @@
 package main
 
-var filename string = "assets/my_cards"
+import "fmt"
 
 func main() {
-	retrievedDeck := newDeckFromFile(filename)
-	retrievedDeck.print()
-	retrievedDeck.shuffle()
-	retrievedDeck.print()
+	fmt.Println("Structs!")
 }
