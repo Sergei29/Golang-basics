@@ -10,6 +10,7 @@ import (
 
 type Deck []string
 
+//lint:ignore U1000 Ignore unused function temporarily for debugging
 func (d Deck) print() {
 	for index, card := range d {
 		fmt.Println(index, card)
