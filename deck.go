@@ -10,17 +10,18 @@ import (
 
 type Deck []string
 
-var cardTitles [13]string = [13]string{"Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine", "Ten", "Jack", "Queen", "King", "Ace"}
-
-var cardSuits [4]string = [4]string{"Hearts", "Diamonds", "Spades", "Clubs"}
-
 func (d Deck) print() {
 	for index, card := range d {
 		fmt.Println(index, card)
 	}
 }
 
+//lint:ignore U1000 Ignore unused function temporarily for debugging
 func newDeck() Deck {
+	var cardTitles [13]string = [13]string{"Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine", "Ten", "Jack", "Queen", "King", "Ace"}
+
+	var cardSuits [4]string = [4]string{"Hearts", "Diamonds", "Spades", "Clubs"}
+
 	deck := Deck{}
 
 	for _, suit := range cardSuits {
@@ -32,18 +33,22 @@ func newDeck() Deck {
 	return deck
 }
 
+//lint:ignore U1000 Ignore unused function temporarily for debugging
 func deal(d Deck, handSize int) (Deck, Deck) {
 	return d[:handSize], d[handSize:]
 }
 
+//lint:ignore U1000 Ignore unused function temporarily for debugging
 func (d Deck) toString() string {
 	return strings.Join([]string(d), ",")
 }
 
+//lint:ignore U1000 Ignore unused function temporarily for debugging
 func toByteSlice(s string) []byte {
 	return []byte(s)
 }
 
+//lint:ignore U1000 Ignore unused function temporarily for debugging
 func (d Deck) saveToFile(fileName string) error {
 	data := toByteSlice(d.toString())
 	return os.WriteFile(fileName, data, 0666)
@@ -56,6 +61,7 @@ func byteSliceToDeck(b []byte) Deck {
 	return Deck(sliceOfCards)
 }
 
+//lint:ignore U1000 Ignore unused function temporarily for debugging
 func newDeckFromFile(fileName string) Deck {
 	data, error := os.ReadFile(fileName)
 
@@ -81,6 +87,7 @@ func getNewRandom() *rand.Rand {
 	return rand.New(source)
 }
 
+//lint:ignore U1000 Ignore unused function temporarily for debugging
 func (d Deck) shuffle() {
 	newRand := getNewRandom()
 
